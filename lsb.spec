@@ -14,7 +14,6 @@ Source4: waivers.txt
 Source5: install_initd
 Source6: remove_initd
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Exclusivearch: %{ix86} ppc x86_64
 
 %define lsb_arch ia32
