@@ -4,7 +4,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 3.1
-Release: %mkrel 14
+Release: %mkrel 15
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
@@ -219,12 +219,6 @@ cat << EOF > $RPM_BUILD_ROOT/etc/hosts.lpd
 #		Added for LSB compiance.
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT/etc/networks
-# Sample networks file for LSB compliance. Database of network 
-# names and addresses, used by programs such as route.
-# format: networkname networkaddress
-EOF
-
 cat << EOF > $RPM_BUILD_ROOT/etc/gateways
 # sample gateways file for LSB compliance. Database of gateways
 # used by routed. Sample format shown below.
@@ -237,7 +231,6 @@ chmod 0755 $RPM_BUILD_ROOT/sbin/fastboot
 chmod 0755 $RPM_BUILD_ROOT/sbin/fasthalt
 chmod 0644 $RPM_BUILD_ROOT/etc/hosts.equiv
 chmod 0644 $RPM_BUILD_ROOT/etc/hosts.lpd
-chmod 0644 $RPM_BUILD_ROOT/etc/networks
 chmod 0644 $RPM_BUILD_ROOT/etc/gateways
 
 # (sb) concession for lsb-apache to run
@@ -276,7 +269,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/%{name}/remove_initd
 %config(noreplace) %{_sysconfdir}/hosts.equiv
 %config(noreplace) %{_sysconfdir}/hosts.lpd
-%config(noreplace) %{_sysconfdir}/networks
 %config(noreplace) %{_sysconfdir}/gateways
 %config(noreplace) %{_sysconfdir}/lsb-release.d/core-%{version}-noarch
 %config(noreplace) %{_sysconfdir}/lsb-release.d/core-%{version}-%{lsb_arch}
