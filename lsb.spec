@@ -4,7 +4,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 3.1
-Release: %mkrel 18
+Release: %mkrel 19
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
@@ -67,7 +67,7 @@ Group: System/Base
 Requires: pax lsb-release make sendmail-command ed glibc_lsb
 Requires: binutils bc nail at m4 patch
 Requires: vim-enhanced diffutils file gettext chkconfig
-Requires: mtools /etc/sgml
+Requires: mtools sgml-common
 Requires(pre):		rpm-helper
 Requires(postun):	rpm-helper
 
