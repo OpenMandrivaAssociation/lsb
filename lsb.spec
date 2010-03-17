@@ -5,7 +5,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 4.0
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
