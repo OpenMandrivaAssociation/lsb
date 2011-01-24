@@ -5,7 +5,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 4.0
-Release: %mkrel 4
+Release: %mkrel 5
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
@@ -111,7 +111,7 @@ Requires: locales-de locales-en locales-es locales-fr locales-is
 Requires: locales-it locales-ja locales-se locales-ta locales-zh 
 Requires: xlsfonts gcc rgb java-1.6.0-openjdk mkfontdir wget
 Requires: perl-doc hplip-hpijs qt4-database-plugin-sqlite
-Requires: libx11-common qt3-Sqlite iceauth slocate
+Requires: libx11-common qt3-Sqlite iceauth mlocate
 
 %description test
 This packages pulls in additional packages not specified by LSB, but
