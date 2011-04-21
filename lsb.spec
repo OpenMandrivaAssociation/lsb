@@ -14,7 +14,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 4.1
-Release: 6
+Release: 7
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
@@ -118,11 +118,8 @@ Requires: perl perl-CGI perl-Safe perl-Pod-Perldoc python
 # printing
 Requires: ghostscript foomatic-filters cups-common
 
-Provides: lsb-noarch = %{version} 
 Provides: %{compat_provides_noarch}
 Provides: %{modular_provides_noarch}
-Provides: lsb-noarch
-Obsoletes: lsb-noarch
 
 %description noarch
 The architecture-neutral requirements for LSB compliance.
@@ -152,10 +149,7 @@ Requires: pax lsb-release make sendmail-command ed
 Requires: binutils bc nail at m4 patch
 Requires: diffutils file gettext chkconfig
 
-Provides: lsb-core-noarch = %{version} 
 Provides: %{core_compat_provides_noarch}
-Provides: lsb-core-noarch
-Obsoletes: lsb-core-noarch
 
 %description core-noarch
 The architecture-neutral core requirements for LSB compliance.
