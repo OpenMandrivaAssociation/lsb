@@ -186,79 +186,79 @@ There are also yum repos at:
  http://ftp.linuxfoundation.org/pub/lsb/repositories/yum/
 EOF
 
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/%{_datadir}/%{name}
-install -d $RPM_BUILD_ROOT/%{_datadir}/nls
-install -d $RPM_BUILD_ROOT/%{_datadir}/tmac
-install -d $RPM_BUILD_ROOT/var/cache/fonts
-install -d $RPM_BUILD_ROOT/var/games
-install -d $RPM_BUILD_ROOT/sbin
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT/lib/%{name}
-install -d $RPM_BUILD_ROOT%{_prefix}/lib/%{name}
-install -d $RPM_BUILD_ROOT/srv
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/opt
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
-install -m 755 %SOURCE0 $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
-install -m 755 %SOURCE1 $RPM_BUILD_ROOT%{_prefix}/lib/%{name}
-install -m 755 %SOURCE2 $RPM_BUILD_ROOT%{_prefix}/lib/%{name}
+rm -rf %{buildroot}
+install -d %{buildroot}/%{_datadir}/%{name}
+install -d %{buildroot}/%{_datadir}/nls
+install -d %{buildroot}/%{_datadir}/tmac
+install -d %{buildroot}/var/cache/fonts
+install -d %{buildroot}/var/games
+install -d %{buildroot}/sbin
+install -d %{buildroot}%{_sysconfdir}/lsb-release.d
+install -d %{buildroot}%{_bindir}
+install -d %{buildroot}/lib/%{name}
+install -d %{buildroot}%{_prefix}/lib/%{name}
+install -d %{buildroot}/srv
+install -d %{buildroot}%{_sysconfdir}/opt
+install -d %{buildroot}%{_sysconfdir}/profile.d
+install -m 755 %SOURCE0 %{buildroot}%{_sysconfdir}/profile.d
+install -m 755 %SOURCE1 %{buildroot}%{_prefix}/lib/%{name}
+install -m 755 %SOURCE2 %{buildroot}%{_prefix}/lib/%{name}
 
-touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-%{version}-%{lsb_arch}
-touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-%{version}-noarch
-touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-%{version}-%{lsb_arch}
-touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-%{version}-noarch
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-%{version}-%{lsb_arch}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-%{version}-noarch
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-%{version}-%{lsb_arch}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-%{version}-noarch
 rm -f lsb-noarch-files.txt lsb-files.txt
 for lsbver in %{compat_versions}; do
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-$lsbver-noarch
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-$lsbver-noarch
   echo %{_sysconfdir}/lsb-release.d/lsb-$lsbver-noarch >> lsb-noarch-files.txt
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-$lsbver-%{lsb_arch}
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-$lsbver-%{lsb_arch}
   echo %{_sysconfdir}/lsb-release.d/lsb-$lsbver-%{lsb_arch} >> lsb-files.txt
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-$lsbver-noarch
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-$lsbver-%{lsb_arch}
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-$lsbver-noarch
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-$lsbver-%{lsb_arch}
 done
 for lsbver in %{modular_versions}; do
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/cxx-$lsbver-noarch
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/cxx-$lsbver-noarch
   echo %{_sysconfdir}/lsb-release.d/cxx-$lsbver-noarch >> lsb-noarch-files.txt
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/cxx-$lsbver-%{lsb_arch}
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/cxx-$lsbver-%{lsb_arch}
   echo %{_sysconfdir}/lsb-release.d/cxx-$lsbver-%{lsb_arch} >> lsb-files.txt
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/graphics-$lsbver-noarch
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-$lsbver-noarch
   echo %{_sysconfdir}/lsb-release.d/graphics-$lsbver-noarch >> lsb-noarch-files.txt
-  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/graphics-$lsbver-%{lsb_arch}
+  touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-$lsbver-%{lsb_arch}
   echo %{_sysconfdir}/lsb-release.d/graphics-$lsbver-%{lsb_arch} >> lsb-files.txt
 done
 
-cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/root-ulimit.sh
+cat << EOF > %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
 #!/bin/sh
 # enable a nonzero core file value for root (exec_A test issues)
 [ "\$UID" = "0" ] && ulimit -c 1000 > /dev/null 2>&1
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT%{_bindir}/lsbinstall
+cat << EOF > %{buildroot}%{_bindir}/lsbinstall
 #!/bin/sh
 exit 0
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT/sbin/fasthalt
+cat << EOF > %{buildroot}/sbin/fasthalt
 #!/bin/sh
 #start fasthalt
 /sbin/halt -f
 #end fasthalt
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT/sbin/fastboot
+cat << EOF > %{buildroot}/sbin/fastboot
 #!/bin/sh
 #start fastboot
 /sbin/reboot -f
 #end fastboot
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT/etc/hosts.equiv
+cat << EOF > %{buildroot}/etc/hosts.equiv
 # Sample hosts.equiv file for LSB compliance
 # see man hosts.equiv for usage.
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT/etc/hosts.lpd
+cat << EOF > %{buildroot}/etc/hosts.lpd
 #
 # hosts.lpd     This file describes the names of the hosts which are
 #               allowed to use the remote printer services of this
@@ -266,19 +266,19 @@ cat << EOF > $RPM_BUILD_ROOT/etc/hosts.lpd
 #		Added for LSB compiance.
 EOF
 
-cat << EOF > $RPM_BUILD_ROOT/etc/gateways
+cat << EOF > %{buildroot}/etc/gateways
 # sample gateways file for LSB compliance. Database of gateways
 # used by routed. Sample format shown below.
 # [ net | host ] name1 gateway name2 metric value [ passive | active | external ]
 EOF
 
-chmod 0755 $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/root-ulimit.sh
-chmod 0755 $RPM_BUILD_ROOT%{_bindir}/lsbinstall
-chmod 0755 $RPM_BUILD_ROOT/sbin/fastboot
-chmod 0755 $RPM_BUILD_ROOT/sbin/fasthalt
-chmod 0644 $RPM_BUILD_ROOT/etc/hosts.equiv
-chmod 0644 $RPM_BUILD_ROOT/etc/hosts.lpd
-chmod 0644 $RPM_BUILD_ROOT/etc/gateways
+chmod 0755 %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
+chmod 0755 %{buildroot}%{_bindir}/lsbinstall
+chmod 0755 %{buildroot}/sbin/fastboot
+chmod 0755 %{buildroot}/sbin/fasthalt
+chmod 0644 %{buildroot}/etc/hosts.equiv
+chmod 0644 %{buildroot}/etc/hosts.lpd
+chmod 0644 %{buildroot}/etc/gateways
 
 # (sb) concession for lsb-apache to run
 %pre test
@@ -288,7 +288,7 @@ chmod 0644 $RPM_BUILD_ROOT/etc/gateways
 %_postun_groupdel nobody
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files %{_lib} -f lsb-files.txt
 %defattr(-, root, root)
