@@ -14,7 +14,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 4.1
-Release: 7
+Release: 8
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
@@ -30,6 +30,10 @@ Exclusivearch: %{ix86} x86_64
 %define lsb_arch amd64
 %endif
 
+%if "%{_lib}" == "lib64"
+%define libext ()(64bit)
+%endif
+
 %description
 The skeleton package defining packages needed for LSB compliance.
 Note: To successfuly run the runtime test suites, install lsb-test.
@@ -43,27 +47,28 @@ Requires: lsb-core-%{_lib}
 # former lsb-cxx - both arches called libfoo
 Requires: libstdc++6
 # former lsb-graphics
-Requires: %mklibname x11_ 6 
-Requires: %mklibname xext 6 
-Requires: %mklibname xi 6
-Requires: %mklibname xt 6 
-Requires: %mklibname xtst 6
-Requires: %mklibname xft 2 
-Requires: %mklibname freetype 6 
-Requires: %mklibname xrender 1 
-Requires: %mklibname mesagl 1 
-Requires: %mklibname mesaglu 1
+Requires: libX11.so.6%{?libext}
+Requires: libXext.so.6%{?libext}
+Requires: libXi.so.6%{?libext}
+Requires: libXt.so.6%{?libext}
+Requires: libXtst.so.6%{?libext}
+Requires: libXft.so.2%{?libext}
+Requires: libXrender.so.1%{?libext}
+Requires: libfreetype.so.6%{?libext}
+Requires: libGL.so.1%{?libext}
+Requires: libGLU.so.1%{?libext}
 
 # former lsb-desktop
-Requires: %mklibname xml 2_2 
-Requires: %mklibname gtk+2.0_ 0 
-# we really need libpng12.so here
-Requires: %mklibname png 3
-Requires: %mklibname cairo 2 
-Requires: %mklibname pango 1.0_0 
-Requires: %mklibname fontconfig 1
-Requires: %mklibname qt 3
-Requires: %mklibname jpeg 62
+Requires: libxml2.so.2%{?libext}
+Requires: libgtk-x11-2.0.so.0%{?libext}
+Requires: libpng12.so.0%{?libext}
+Requires: libcairo.so.2%{?libext}
+Requires: libpango-1.0.so.0%{?libext}
+Requires: libpangoxft-1.0.so.0%{?libext}
+Requires: libpangocairo-1.0.so.0%{?libext}
+Requires: libfontconfig.so.1%{?libext}
+Requires: libqt-mt.so.3%{?libext}
+Requires: libjpeg.so.62%{?libext}
 
 # former lsb-qt4
 Requires: qt4-common >= 4.2.3
@@ -75,14 +80,14 @@ Requires: %{_lib}qtsql4 >= 4.2.3
 Requires: %{_lib}qtxml4 >= 4.2.3
 
 # printing
-Requires: %mklibname cups 2
+Requires: libcups.so.2%{?libext}
 
 # multimedia
-Requires: %mklibname alsa 2
+Requires: libasound.so.2%{?libext}
 
 # security
-Requires: %mklibname nss 3
-Requires: %mklibname nspr 4
+Requires: libnss3.so%{?libext}
+Requires: libnspr4.so%{?libext}
 
 Provides: lsb-%{lsb_arch} = %{version} 
 Provides: %{compat_provides_arch}
@@ -130,8 +135,8 @@ Group: System/Base
 
 Requires: lsb-core-noarch
 Requires: %{_lib}glibc_lsb
-Requires: %mklibname pam 0
-Requires: %mklibname ncurses 5
+Requires: libpam.so.0%{?libext}
+Requires: libncurses.so.5%{?libext}
 
 Provides: lsb-core-%{lsb_arch} = %{version} 
 Provides: %{core_compat_provides_arch}
