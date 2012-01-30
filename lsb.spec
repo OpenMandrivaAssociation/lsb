@@ -14,7 +14,7 @@
 Summary: The skeleton package defining packages needed for LSB compliance
 Name: lsb
 Version: 4.1
-Release: 8
+Release: 9
 License: GPL
 Group: System/Base
 URL: http://www.linuxbase.org
@@ -118,7 +118,9 @@ Group: System/Base
 Requires: xdg-utils
 
 # interpreted languages
-Requires: perl perl-CGI perl-Safe perl-Pod-Perldoc python
+Requires: perl perl-CGI perl-Safe perl-Pod-Perldoc
+Requires: perl-Class-ISA perl-Pod-Plainer
+Requires: python
 
 # printing
 Requires: ghostscript foomatic-filters cups-common
