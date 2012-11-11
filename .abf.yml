@@ -1,0 +1,4 @@
+sources:
+  "install_initd:"	767fbf94f4f9c5f979bb260f9c6ca006c0da596b
+  "remove_initd:"	a660e8ccb9f975daa03ee493b72e5e8a4febfde8
+  "tmpdirlsb.sh:"	5b52131cdf6d24002c48e885338021f549a398c8
