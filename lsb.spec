@@ -30,10 +30,6 @@ Exclusivearch: %{ix86} x86_64
 %define lsb_arch amd64
 %endif
 
-%if "%{_lib}" == "lib64"
-%define libext ()(64bit)
-%endif
-
 %description
 The skeleton package defining packages needed for LSB compliance.
 Note: To successfuly run the runtime test suites, install lsb-test.
@@ -45,30 +41,29 @@ Group: System/Base
 Requires: lsb-noarch
 Requires: lsb-core-%{_lib}
 # former lsb-cxx - both arches called libfoo
-Requires: libstdc++6
+Requires: %{_lib}stdc++6
 # former lsb-graphics
-Requires: libX11.so.6%{?libext}
-Requires: libXext.so.6%{?libext}
-Requires: libXi.so.6%{?libext}
-Requires: libXt.so.6%{?libext}
-Requires: libXtst.so.6%{?libext}
-Requires: libXft.so.2%{?libext}
-Requires: libXrender.so.1%{?libext}
-Requires: libfreetype.so.6%{?libext}
-Requires: libGL.so.1%{?libext}
-Requires: libGLU.so.1%{?libext}
+Requires: %mklibname x11_ 6 
+Requires: %mklibname xext 6 
+Requires: %mklibname xi 6
+Requires: %mklibname xt 6 
+Requires: %mklibname xtst 6
+Requires: %mklibname xft 2 
+Requires: %mklibname freetype 6 
+Requires: %mklibname xrender 1 
+Requires: %mklibname gl 1 
+Requires: %mklibname glu 1
 
 # former lsb-desktop
-Requires: libxml2.so.2%{?libext}
-Requires: libgtk-x11-2.0.so.0%{?libext}
-Requires: libpng12.so.0%{?libext}
-Requires: libcairo.so.2%{?libext}
-Requires: libpango-1.0.so.0%{?libext}
-Requires: libpangoxft-1.0.so.0%{?libext}
-Requires: libpangocairo-1.0.so.0%{?libext}
-Requires: libfontconfig.so.1%{?libext}
-Requires: libqt-mt.so.3%{?libext}
-Requires: libjpeg.so.62%{?libext}
+Requires: %mklibname xml 2_2 
+Requires: %mklibname gtk+2.0_ 0 
+# we really need libpng12.so here
+Requires: %mklibname png 3
+Requires: %mklibname cairo 2 
+Requires: %mklibname pango 1.0_0 
+Requires: %mklibname fontconfig 1
+Requires: %mklibname qt 3
+Requires: %mklibname jpeg 62
 
 # former lsb-qt4
 Requires: qt4-common >= 4.2.3
@@ -80,14 +75,14 @@ Requires: %{_lib}qtsql4 >= 4.2.3
 Requires: %{_lib}qtxml4 >= 4.2.3
 
 # printing
-Requires: libcups.so.2%{?libext}
+Requires: %mklibname cups 2
 
 # multimedia
-Requires: libasound.so.2%{?libext}
+Requires: %mklibname alsa 2
 
 # security
-Requires: libnss3.so%{?libext}
-Requires: libnspr4.so%{?libext}
+Requires: %mklibname nss 3
+Requires: %mklibname nspr 4
 
 Provides: lsb-%{lsb_arch} = %{version} 
 Provides: %{compat_provides_arch}
@@ -118,9 +113,7 @@ Group: System/Base
 Requires: xdg-utils
 
 # interpreted languages
-Requires: perl perl-CGI perl-Safe perl-Pod-Perldoc
-Requires: perl-Class-ISA perl-Pod-Plainer
-Requires: python
+Requires: perl perl-CGI perl-Safe perl-Pod-Perldoc python
 
 # printing
 Requires: ghostscript foomatic-filters cups-common
@@ -137,8 +130,8 @@ Group: System/Base
 
 Requires: lsb-core-noarch
 Requires: %{_lib}glibc_lsb
-Requires: libpam.so.0%{?libext}
-Requires: libncurses.so.5%{?libext}
+Requires: %mklibname pam 0
+Requires: %mklibname ncurses 5
 
 Provides: lsb-core-%{lsb_arch} = %{version} 
 Provides: %{core_compat_provides_arch}
@@ -193,79 +186,79 @@ There are also yum repos at:
  http://ftp.linuxfoundation.org/pub/lsb/repositories/yum/
 EOF
 
-rm -rf %{buildroot}
-install -d %{buildroot}/%{_datadir}/%{name}
-install -d %{buildroot}/%{_datadir}/nls
-install -d %{buildroot}/%{_datadir}/tmac
-install -d %{buildroot}/var/cache/fonts
-install -d %{buildroot}/var/games
-install -d %{buildroot}/sbin
-install -d %{buildroot}%{_sysconfdir}/lsb-release.d
-install -d %{buildroot}%{_bindir}
-install -d %{buildroot}/lib/%{name}
-install -d %{buildroot}%{_prefix}/lib/%{name}
-install -d %{buildroot}/srv
-install -d %{buildroot}%{_sysconfdir}/opt
-install -d %{buildroot}%{_sysconfdir}/profile.d
-install -m 755 %SOURCE0 %{buildroot}%{_sysconfdir}/profile.d
-install -m 755 %SOURCE1 %{buildroot}%{_prefix}/lib/%{name}
-install -m 755 %SOURCE2 %{buildroot}%{_prefix}/lib/%{name}
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_datadir}/%{name}
+install -d $RPM_BUILD_ROOT/%{_datadir}/nls
+install -d $RPM_BUILD_ROOT/%{_datadir}/tmac
+install -d $RPM_BUILD_ROOT/var/cache/fonts
+install -d $RPM_BUILD_ROOT/var/games
+install -d $RPM_BUILD_ROOT/sbin
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d
+install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT/lib/%{name}
+install -d $RPM_BUILD_ROOT%{_prefix}/lib/%{name}
+install -d $RPM_BUILD_ROOT/srv
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/opt
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
+install -m 755 %SOURCE0 $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
+install -m 755 %SOURCE1 $RPM_BUILD_ROOT%{_prefix}/lib/%{name}
+install -m 755 %SOURCE2 $RPM_BUILD_ROOT%{_prefix}/lib/%{name}
 
-touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-%{version}-%{lsb_arch}
-touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-%{version}-noarch
-touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-%{version}-%{lsb_arch}
-touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-%{version}-noarch
+touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-%{version}-%{lsb_arch}
+touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-%{version}-noarch
+touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-%{version}-%{lsb_arch}
+touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-%{version}-noarch
 rm -f lsb-noarch-files.txt lsb-files.txt
 for lsbver in %{compat_versions}; do
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-$lsbver-noarch
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-$lsbver-noarch
   echo %{_sysconfdir}/lsb-release.d/lsb-$lsbver-noarch >> lsb-noarch-files.txt
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/lsb-$lsbver-%{lsb_arch}
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/lsb-$lsbver-%{lsb_arch}
   echo %{_sysconfdir}/lsb-release.d/lsb-$lsbver-%{lsb_arch} >> lsb-files.txt
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-$lsbver-noarch
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/core-$lsbver-%{lsb_arch}
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-$lsbver-noarch
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/core-$lsbver-%{lsb_arch}
 done
 for lsbver in %{modular_versions}; do
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/cxx-$lsbver-noarch
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/cxx-$lsbver-noarch
   echo %{_sysconfdir}/lsb-release.d/cxx-$lsbver-noarch >> lsb-noarch-files.txt
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/cxx-$lsbver-%{lsb_arch}
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/cxx-$lsbver-%{lsb_arch}
   echo %{_sysconfdir}/lsb-release.d/cxx-$lsbver-%{lsb_arch} >> lsb-files.txt
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-$lsbver-noarch
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/graphics-$lsbver-noarch
   echo %{_sysconfdir}/lsb-release.d/graphics-$lsbver-noarch >> lsb-noarch-files.txt
-  touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-$lsbver-%{lsb_arch}
+  touch $RPM_BUILD_ROOT%{_sysconfdir}/lsb-release.d/graphics-$lsbver-%{lsb_arch}
   echo %{_sysconfdir}/lsb-release.d/graphics-$lsbver-%{lsb_arch} >> lsb-files.txt
 done
 
-cat << EOF > %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
+cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/root-ulimit.sh
 #!/bin/sh
 # enable a nonzero core file value for root (exec_A test issues)
 [ "\$UID" = "0" ] && ulimit -c 1000 > /dev/null 2>&1
 EOF
 
-cat << EOF > %{buildroot}%{_bindir}/lsbinstall
+cat << EOF > $RPM_BUILD_ROOT%{_bindir}/lsbinstall
 #!/bin/sh
 exit 0
 EOF
 
-cat << EOF > %{buildroot}/sbin/fasthalt
+cat << EOF > $RPM_BUILD_ROOT/sbin/fasthalt
 #!/bin/sh
 #start fasthalt
 /sbin/halt -f
 #end fasthalt
 EOF
 
-cat << EOF > %{buildroot}/sbin/fastboot
+cat << EOF > $RPM_BUILD_ROOT/sbin/fastboot
 #!/bin/sh
 #start fastboot
 /sbin/reboot -f
 #end fastboot
 EOF
 
-cat << EOF > %{buildroot}/etc/hosts.equiv
+cat << EOF > $RPM_BUILD_ROOT/etc/hosts.equiv
 # Sample hosts.equiv file for LSB compliance
 # see man hosts.equiv for usage.
 EOF
 
-cat << EOF > %{buildroot}/etc/hosts.lpd
+cat << EOF > $RPM_BUILD_ROOT/etc/hosts.lpd
 #
 # hosts.lpd     This file describes the names of the hosts which are
 #               allowed to use the remote printer services of this
@@ -273,19 +266,19 @@ cat << EOF > %{buildroot}/etc/hosts.lpd
 #		Added for LSB compiance.
 EOF
 
-cat << EOF > %{buildroot}/etc/gateways
+cat << EOF > $RPM_BUILD_ROOT/etc/gateways
 # sample gateways file for LSB compliance. Database of gateways
 # used by routed. Sample format shown below.
 # [ net | host ] name1 gateway name2 metric value [ passive | active | external ]
 EOF
 
-chmod 0755 %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
-chmod 0755 %{buildroot}%{_bindir}/lsbinstall
-chmod 0755 %{buildroot}/sbin/fastboot
-chmod 0755 %{buildroot}/sbin/fasthalt
-chmod 0644 %{buildroot}/etc/hosts.equiv
-chmod 0644 %{buildroot}/etc/hosts.lpd
-chmod 0644 %{buildroot}/etc/gateways
+chmod 0755 $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/root-ulimit.sh
+chmod 0755 $RPM_BUILD_ROOT%{_bindir}/lsbinstall
+chmod 0755 $RPM_BUILD_ROOT/sbin/fastboot
+chmod 0755 $RPM_BUILD_ROOT/sbin/fasthalt
+chmod 0644 $RPM_BUILD_ROOT/etc/hosts.equiv
+chmod 0644 $RPM_BUILD_ROOT/etc/hosts.lpd
+chmod 0644 $RPM_BUILD_ROOT/etc/gateways
 
 # (sb) concession for lsb-apache to run
 %pre test
@@ -295,7 +288,7 @@ chmod 0644 %{buildroot}/etc/gateways
 %_postun_groupdel nobody
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %files %{_lib} -f lsb-files.txt
 %defattr(-, root, root)
@@ -333,4 +326,11 @@ rm -rf %{buildroot}
 %defattr(-, root, root)
 %config(noreplace) %{_sysconfdir}/profile.d/tmpdirlsb.sh
 %config(noreplace) %{_sysconfdir}/profile.d/root-ulimit.sh
+
+
+
+%changelog
+* Thu Apr 21 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 4.1-7
++ Revision: 656580
+- drop useless provides/obsoletes that made packages disappear (#62964)
 
