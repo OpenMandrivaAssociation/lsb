@@ -11,19 +11,18 @@
 %define modular_provides_noarch %(for ver in %{modular_versions};do echo -n "lsbcxx-noarch = $ver lsb-graphics-noarch = $ver ";done)
 %define modular_provides_arch %(for ver in %{modular_versions};do echo -n "lsbcxx-%{lsb_arch} = $ver lsb-graphics-%{lsb_arch} = $ver ";done)
 
-Summary: The skeleton package defining packages needed for LSB compliance
-Name: lsb
-Version: 4.1
-Release: 9
-License: GPL
-Group: System/Base
-URL: http://www.linuxbase.org
-Source0: tmpdirlsb.sh
-Source1: install_initd
-Source2: remove_initd
+Summary:	The skeleton package defining packages needed for LSB compliance
+Name:		lsb
+Version:	4.1
+Release:	10
+License:	GPL
+Group:		System/Base
+URL:		http://www.linuxbase.org
+Source0:	tmpdirlsb.sh
+Source1:	install_initd
+Source2:	remove_initd
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
-Exclusivearch: %{ix86} x86_64
+Exclusivearch:	%{ix86} x86_64
 
 %define lsb_arch ia32
 %ifarch x86_64
@@ -34,142 +33,136 @@ Exclusivearch: %{ix86} x86_64
 The skeleton package defining packages needed for LSB compliance.
 Note: To successfuly run the runtime test suites, install lsb-test.
 
-%package %{_lib}
-Summary: The skeleton package defining packages needed for LSB compliance
-Group: System/Base
+%package	%{_lib}
+Summary:	The skeleton package defining packages needed for LSB compliance
+Group:		System/Base
 
-Requires: lsb-noarch
-Requires: lsb-core-%{_lib}
+Requires:	lsb-noarch
+Requires:	lsb-core-%{_lib}
 # former lsb-cxx - both arches called libfoo
-Requires: libstdc++6
+Requires:	libstdc++6
 # former lsb-graphics
-Requires: libX11.so.6%{_arch_tag_suffix}
-Requires: libXext.so.6%{_arch_tag_suffix}
-Requires: libXi.so.6%{_arch_tag_suffix}
-Requires: libXt.so.6%{_arch_tag_suffix}
-Requires: libXtst.so.6%{_arch_tag_suffix}
-Requires: libXft.so.2%{_arch_tag_suffix}
-Requires: libXrender.so.1%{_arch_tag_suffix}
-Requires: libfreetype.so.6%{_arch_tag_suffix}
-Requires: libGL.so.1%{_arch_tag_suffix}
-Requires: libGLU.so.1%{_arch_tag_suffix}
+Requires:	libX11.so.6%{_arch_tag_suffix}
+Requires:	libXext.so.6%{_arch_tag_suffix}
+Requires:	libXi.so.6%{_arch_tag_suffix}
+Requires:	libXt.so.6%{_arch_tag_suffix}
+Requires:	libXtst.so.6%{_arch_tag_suffix}
+Requires:	libXft.so.2%{_arch_tag_suffix}
+Requires:	libXrender.so.1%{_arch_tag_suffix}
+Requires:	libfreetype.so.6%{_arch_tag_suffix}
+Requires:	libGL.so.1%{_arch_tag_suffix}
+Requires:	libGLU.so.1%{_arch_tag_suffix}
 
 # former lsb-desktop
-Requires: libxml2.so.2%{_arch_tag_suffix}
-Requires: libgtk-x11-2.0.so.0%{_arch_tag_suffix}
-Requires: libpng12.so.0%{_arch_tag_suffix}
-Requires: libcairo.so.2%{_arch_tag_suffix}
-Requires: libpango-1.0.so.0%{_arch_tag_suffix}
-Requires: libpangoxft-1.0.so.0%{_arch_tag_suffix}
-Requires: libpangocairo-1.0.so.0%{_arch_tag_suffix}
-Requires: libfontconfig.so.1%{_arch_tag_suffix}
-Requires: libqt-mt.so.3%{_arch_tag_suffix}
-Requires: libjpeg.so.62%{_arch_tag_suffix}
+Requires:	libxml2.so.2%{_arch_tag_suffix}
+Requires:	libgtk-x11-2.0.so.0%{_arch_tag_suffix}
+Requires:	libpng12.so.0%{_arch_tag_suffix}
+Requires:	libcairo.so.2%{_arch_tag_suffix}
+Requires:	libpango-1.0.so.0%{_arch_tag_suffix}
+Requires:	libpangoxft-1.0.so.0%{_arch_tag_suffix}
+Requires:	libpangocairo-1.0.so.0%{_arch_tag_suffix}
+Requires:	libfontconfig.so.1%{_arch_tag_suffix}
+Requires:	libqt-mt.so.3%{_arch_tag_suffix}
+Requires:	libjpeg.so.62%{_arch_tag_suffix}
 
 # former lsb-qt4
-Requires: qt4-common >= 4.2.3
+Requires:	qt4-common >= 4.2.3
 # %%mklibname doesn't work here
-Requires: %{_lib}qtopengl4 >= 4.2.3
-Requires: %{_lib}qtsvg4 >= 4.2.3
-Requires: %{_lib}qtnetwork4 >= 4.2.3
-Requires: %{_lib}qtsql4 >= 4.2.3
-Requires: %{_lib}qtxml4 >= 4.2.3
+Requires:	%{_lib}qtopengl4 >= 4.2.3
+Requires:	%{_lib}qtsvg4 >= 4.2.3
+Requires:	%{_lib}qtnetwork4 >= 4.2.3
+Requires:	%{_lib}qtsql4 >= 4.2.3
+Requires:	%{_lib}qtxml4 >= 4.2.3
 
 # printing
-Requires: libcups.so.2%{_arch_tag_suffix}
+Requires:	libcups.so.2%{_arch_tag_suffix}
 
 # multimedia
-Requires: libasound.so.2%{_arch_tag_suffix}
+Requires:	libasound.so.2%{_arch_tag_suffix}
 
 # security
-Requires: libnss3.so%{_arch_tag_suffix}
-Requires: libnspr4.so%{_arch_tag_suffix}
+Requires:	libnss3.so%{_arch_tag_suffix}
+Requires:	libnspr4.so%{_arch_tag_suffix}
 
-Provides: lsb-%{lsb_arch} = %{version} 
-Provides: %{compat_provides_arch}
-Provides: %{modular_provides_arch}
+Provides:	lsb-%{lsb_arch} = %{version} 
+Provides:	%{compat_provides_arch}
+Provides:	%{modular_provides_arch}
 
-Conflicts: lsb-release < 2.0
+Conflicts:	lsb-release < 2.0
 
-Provides: lsb-cxx
-Obsoletes: lsb-cxx
-Provides: lsb-graphics
-Obsoletes: lsb-graphics
-Provides: lsb-desktop
-Obsoletes: lsb-desktop
-Provides: lsb-desktop-qt4
-Obsoletes: lsb-desktop-qt4
-Provides: lsb = %{version}
-Obsoletes: lsb <= %{version}
+%rename		lsb-cxx
+%rename		lsb-graphics
+%rename		lsb-desktop
+%rename		lsb-desktop-qt4
+%rename		lsb
 
-%description %{_lib}
+%description	%{_lib}
 The skeleton package defining packages needed for LSB compliance.
 Note: To successfuly run the runtime test suites, install lsb-test.
 
-%package noarch
-Summary: Architecture neutral components of LSB
-Group: System/Base
+%package	noarch
+Summary:	Architecture neutral components of LSB
+Group:		System/Base
 
 # former lsb-desktop
-Requires: xdg-utils
+Requires:	xdg-utils
 
 # interpreted languages
-Requires: perl perl-CGI perl-Safe perl-Pod-Perldoc
-Requires: perl-Class-ISA perl-Pod-Plainer
-Requires: python
+Requires:	perl perl-CGI perl-Safe perl-Pod-Perldoc
+Requires:	perl-Class-ISA perl-Pod-Plainer
+Requires:	python
 
 # printing
-Requires: ghostscript foomatic-filters cups-common
+Requires:	ghostscript foomatic-filters cups-common
 
-Provides: %{compat_provides_noarch}
-Provides: %{modular_provides_noarch}
+Provides:	%{compat_provides_noarch}
+Provides:	%{modular_provides_noarch}
 
-%description noarch
+%description	noarch
 The architecture-neutral requirements for LSB compliance.
 
-%package core-%{_lib}
-Summary: Core requirements needed for LSB compliance
-Group: System/Base
+%package	core-%{_lib}
+Summary:	Core requirements needed for LSB compliance
+Group:		System/Base
 
-Requires: lsb-core-noarch
-Requires: %{_lib}glibc_lsb
-Requires: libpam.so.0%{_arch_tag_suffix}
-Requires: libncurses.so.5%{_arch_tag_suffix}
+Requires:	lsb-core-noarch
+Requires:	%{_lib}glibc_lsb
+Requires:	libpam.so.0%{_arch_tag_suffix}
+Requires:	libncurses.so.5%{_arch_tag_suffix}
 
-Provides: lsb-core-%{lsb_arch} = %{version} 
-Provides: %{core_compat_provides_arch}
-Provides: lsb-core = %{version}
-Obsoletes: lsb-core
+Provides:	lsb-core-%{lsb_arch} = %{version} 
+Provides:	%{core_compat_provides_arch}
+%rename		lsb-core
 
-%description core-%{_lib}
+%description	core-%{_lib}
 The core requirements for LSB compliance.
 
-%package core-noarch
-Summary: Architecture neutral components of lsb-core
-Group: System/Base
+%package	core-noarch
+Summary:	Architecture neutral components of lsb-core
+Group:		System/Base
 
-Requires: pax lsb-release make sendmail-command ed 
-Requires: binutils bc nail at m4 patch
-Requires: diffutils file gettext chkconfig
+Requires:	pax lsb-release make sendmail-command ed 
+Requires:	binutils bc nail at m4 patch
+Requires:	diffutils file gettext chkconfig
 
-Provides: %{core_compat_provides_noarch}
+Provides:	%{core_compat_provides_noarch}
 
-%description core-noarch
+%description	core-noarch
 The architecture-neutral core requirements for LSB compliance.
 
-%package test
-Summary: Requirements needed to successfully run the LSB runtime tests
-Group: System/Base
+%package	test
+Summary:	Requirements needed to successfully run the LSB runtime tests
+Group:		System/Base
 
-Requires: lsb
-Requires: perl-DBI perl-devel perl-XML-Parser perl-URI glibc-i18ndata
-Requires: locales-de locales-en locales-es locales-fr locales-is
-Requires: locales-it locales-ja locales-se locales-ta locales-zh 
-Requires: wget qt4-database-plugin-sqlite qt3-Sqlite libx11-common
-Requires(pre):		rpm-helper
-Requires(postun):	rpm-helper
+Requires:	lsb
+Requires:	perl-DBI perl-devel perl-XML-Parser perl-URI glibc-i18ndata
+Requires:	locales-de locales-en locales-es locales-fr locales-is
+Requires:	locales-it locales-ja locales-se locales-ta locales-zh 
+Requires:	wget qt4-database-plugin-sqlite qt3-Sqlite libx11-common
+Requires(pre):	rpm-helper
+Requires(postun):rpm-helper
 
-%description test
+%description	test
 This packages pulls in additional packages not specified by LSB, but
 required to successfully run the LSB runtime tests.
 
@@ -189,7 +182,6 @@ There are also yum repos at:
  http://ftp.linuxfoundation.org/pub/lsb/repositories/yum/
 EOF
 
-rm -rf %{buildroot}
 install -d %{buildroot}/%{_datadir}/%{name}
 install -d %{buildroot}/%{_datadir}/nls
 install -d %{buildroot}/%{_datadir}/tmac
@@ -290,23 +282,16 @@ chmod 0644 %{buildroot}/etc/gateways
 %postun test
 %_postun_groupdel nobody
 
-%clean
-rm -rf %{buildroot}
-
 %files %{_lib} -f lsb-files.txt
-%defattr(-, root, root)
 %config(noreplace) %{_sysconfdir}/lsb-release.d/lsb-%{version}-%{lsb_arch}
 
 %files noarch -f lsb-noarch-files.txt
-%defattr(-, root, root)
 %config(noreplace) %{_sysconfdir}/lsb-release.d/lsb-%{version}-noarch
 
 %files core-%{_lib}
-%defattr(-, root, root)
 %config(noreplace) %{_sysconfdir}/lsb-release.d/core-*-%{lsb_arch}
 
 %files core-noarch
-%defattr(-, root, root)
 %{_datadir}/nls
 %{_datadir}/tmac
 /var/cache/fonts
@@ -326,7 +311,5 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/lsb-release.d/core-*-noarch
 
 %files test
-%defattr(-, root, root)
 %config(noreplace) %{_sysconfdir}/profile.d/tmpdirlsb.sh
 %config(noreplace) %{_sysconfdir}/profile.d/root-ulimit.sh
-
