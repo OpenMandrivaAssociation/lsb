@@ -68,11 +68,11 @@ Requires:	libjpeg.so.62%{_arch_tag_suffix}
 # former lsb-qt4
 Requires:	qt4-common >= 4.2.3
 # %%mklibname doesn't work here
-Requires:	%{_lib}qtopengl4 >= 4.2.3
-Requires:	%{_lib}qtsvg4 >= 4.2.3
-Requires:	%{_lib}qtnetwork4 >= 4.2.3
-Requires:	%{_lib}qtsql4 >= 4.2.3
-Requires:	%{_lib}qtxml4 >= 4.2.3
+Requires:	libQtOpenGL.so.4%{_arch_tag_suffix}
+Requires:	libQtSvg.so.4%{_arch_tag_suffix}
+Requires:	libQtNetwork.so.4%{_arch_tag_suffix}
+Requires:	libQtSql.so.4%{_arch_tag_suffix}
+Requires:	libQtXml.so.4%{_arch_tag_suffix}
 
 # printing
 Requires:	libcups.so.2%{_arch_tag_suffix}
