@@ -30,10 +30,6 @@ Exclusivearch: %{ix86} x86_64
 %define lsb_arch amd64
 %endif
 
-%if "%{_lib}" == "lib64"
-%define libext ()(64bit)
-%endif
-
 %description
 The skeleton package defining packages needed for LSB compliance.
 Note: To successfuly run the runtime test suites, install lsb-test.
@@ -47,28 +43,28 @@ Requires: lsb-core-%{_lib}
 # former lsb-cxx - both arches called libfoo
 Requires: libstdc++6
 # former lsb-graphics
-Requires: libX11.so.6%{?libext}
-Requires: libXext.so.6%{?libext}
-Requires: libXi.so.6%{?libext}
-Requires: libXt.so.6%{?libext}
-Requires: libXtst.so.6%{?libext}
-Requires: libXft.so.2%{?libext}
-Requires: libXrender.so.1%{?libext}
-Requires: libfreetype.so.6%{?libext}
-Requires: libGL.so.1%{?libext}
-Requires: libGLU.so.1%{?libext}
+Requires: libX11.so.6%{_arch_tag_suffix}
+Requires: libXext.so.6%{_arch_tag_suffix}
+Requires: libXi.so.6%{_arch_tag_suffix}
+Requires: libXt.so.6%{_arch_tag_suffix}
+Requires: libXtst.so.6%{_arch_tag_suffix}
+Requires: libXft.so.2%{_arch_tag_suffix}
+Requires: libXrender.so.1%{_arch_tag_suffix}
+Requires: libfreetype.so.6%{_arch_tag_suffix}
+Requires: libGL.so.1%{_arch_tag_suffix}
+Requires: libGLU.so.1%{_arch_tag_suffix}
 
 # former lsb-desktop
-Requires: libxml2.so.2%{?libext}
-Requires: libgtk-x11-2.0.so.0%{?libext}
-Requires: libpng12.so.0%{?libext}
-Requires: libcairo.so.2%{?libext}
-Requires: libpango-1.0.so.0%{?libext}
-Requires: libpangoxft-1.0.so.0%{?libext}
-Requires: libpangocairo-1.0.so.0%{?libext}
-Requires: libfontconfig.so.1%{?libext}
-Requires: libqt-mt.so.3%{?libext}
-Requires: libjpeg.so.62%{?libext}
+Requires: libxml2.so.2%{_arch_tag_suffix}
+Requires: libgtk-x11-2.0.so.0%{_arch_tag_suffix}
+Requires: libpng12.so.0%{_arch_tag_suffix}
+Requires: libcairo.so.2%{_arch_tag_suffix}
+Requires: libpango-1.0.so.0%{_arch_tag_suffix}
+Requires: libpangoxft-1.0.so.0%{_arch_tag_suffix}
+Requires: libpangocairo-1.0.so.0%{_arch_tag_suffix}
+Requires: libfontconfig.so.1%{_arch_tag_suffix}
+Requires: libqt-mt.so.3%{_arch_tag_suffix}
+Requires: libjpeg.so.62%{_arch_tag_suffix}
 
 # former lsb-qt4
 Requires: qt4-common >= 4.2.3
@@ -80,14 +76,14 @@ Requires: %{_lib}qtsql4 >= 4.2.3
 Requires: %{_lib}qtxml4 >= 4.2.3
 
 # printing
-Requires: libcups.so.2%{?libext}
+Requires: libcups.so.2%{_arch_tag_suffix}
 
 # multimedia
-Requires: libasound.so.2%{?libext}
+Requires: libasound.so.2%{_arch_tag_suffix}
 
 # security
-Requires: libnss3.so%{?libext}
-Requires: libnspr4.so%{?libext}
+Requires: libnss3.so%{_arch_tag_suffix}
+Requires: libnspr4.so%{_arch_tag_suffix}
 
 Provides: lsb-%{lsb_arch} = %{version} 
 Provides: %{compat_provides_arch}
@@ -137,8 +133,8 @@ Group: System/Base
 
 Requires: lsb-core-noarch
 Requires: %{_lib}glibc_lsb
-Requires: libpam.so.0%{?libext}
-Requires: libncurses.so.5%{?libext}
+Requires: libpam.so.0%{_arch_tag_suffix}
+Requires: libncurses.so.5%{_arch_tag_suffix}
 
 Provides: lsb-core-%{lsb_arch} = %{version} 
 Provides: %{core_compat_provides_arch}
