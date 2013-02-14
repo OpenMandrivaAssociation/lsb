@@ -108,8 +108,8 @@ Group:		System/Base
 Requires:	xdg-utils
 
 # interpreted languages
-Requires:	perl perl-CGI perl-Safe perl-Pod-Perldoc
-Requires:	perl-Class-ISA perl-Pod-Plainer
+Requires:	perl perl(CGI) perl(Safe) perl(Pod::Perldoc) 
+Requires:	perl(Class::ISA) perl(Pod::Plainer)
 Requires:	python
 
 # printing
