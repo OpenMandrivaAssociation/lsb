@@ -1,0 +1,16 @@
+#!/bin/sh
+# very basic LSB compliance script
+# Stew Benedict <sbenedict@mandriva.com>
+# according to LSB "Installation and Removal of init.d Files"
+# the file should be in /etc/init.d, strip the path and use chkconfig
+if [ -z $1 ]; then
+	echo "usage $0 path_to_init_script (/etc/init.d/foo)"
+	exit 1
+else
+	init_name=`basename $1`
+	if [ -z $init_name ]; then
+		echo "cannot seperate path from script name for $1"
+		exit 1
+	fi
+	/sbin/chkconfig --del $init_name
+fi
