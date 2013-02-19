@@ -224,7 +224,6 @@ for lsbver in %{modular_versions}; do
 done
 
 cat << EOF > %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
-#!/bin/sh
 # enable a nonzero core file value for root (exec_A test issues)
 [ "\$UID" = "0" ] && ulimit -c 1000 > /dev/null 2>&1
 EOF
