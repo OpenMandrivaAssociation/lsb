@@ -195,7 +195,7 @@ install -d %{buildroot}%{_prefix}/lib/%{name}
 install -d %{buildroot}/srv
 install -d %{buildroot}%{_sysconfdir}/opt
 install -d %{buildroot}%{_sysconfdir}/profile.d
-install -m 755 %SOURCE0 %{buildroot}%{_sysconfdir}/profile.d
+install -m 644 %SOURCE0 %{buildroot}%{_sysconfdir}/profile.d
 install -m 755 %SOURCE1 %{buildroot}%{_prefix}/lib/%{name}
 install -m 755 %SOURCE2 %{buildroot}%{_prefix}/lib/%{name}
 
@@ -267,7 +267,7 @@ cat << EOF > %{buildroot}/etc/gateways
 # [ net | host ] name1 gateway name2 metric value [ passive | active | external ]
 EOF
 
-chmod 0755 %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
+chmod 0644 %{buildroot}%{_sysconfdir}/profile.d/root-ulimit.sh
 chmod 0755 %{buildroot}%{_bindir}/lsbinstall
 chmod 0755 %{buildroot}/sbin/fastboot
 chmod 0755 %{buildroot}/sbin/fasthalt
