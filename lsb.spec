@@ -40,7 +40,7 @@ Group:		System/Base
 Requires:	lsb-noarch
 Requires:	lsb-core-%{_lib}
 # former lsb-cxx - both arches called libfoo
-Requires:	libstdc++6
+Requires:	libstdc++.so.6%{_arch_tag_suffix}
 # former lsb-graphics
 Requires:	libX11.so.6%{_arch_tag_suffix}
 Requires:	libXext.so.6%{_arch_tag_suffix}
