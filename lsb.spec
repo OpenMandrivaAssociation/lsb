@@ -311,5 +311,5 @@ chmod 0644 %{buildroot}/etc/gateways
 %config(noreplace) %{_sysconfdir}/lsb-release.d/core-*-noarch
 
 %files test
-%config(noreplace) %{_sysconfdir}/profile.d/tmpdirlsb.sh
-%config(noreplace) %{_sysconfdir}/profile.d/root-ulimit.sh
+%{_sysconfdir}/profile.d/tmpdirlsb.sh
+%{_sysconfdir}/profile.d/root-ulimit.sh
