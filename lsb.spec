@@ -158,7 +158,7 @@ Requires:	lsb
 Requires:	perl-DBI perl-devel perl-XML-Parser perl-URI glibc-i18ndata
 Requires:	locales-de locales-en locales-es locales-fr locales-is
 Requires:	locales-it locales-ja locales-se locales-ta locales-zh 
-Requires:	wget qt4-database-plugin-sqlite qt3-Sqlite libx11-common
+Requires:	wget qt4-database-plugin-sqlite libx11-common
 Requires(pre):	rpm-helper
 Requires(postun):rpm-helper
 
