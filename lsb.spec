@@ -192,8 +192,6 @@ install -d %{buildroot}%{_sysconfdir}/lsb-release.d
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}/lib/%{name}
 install -d %{buildroot}%{_prefix}/lib/%{name}
-install -d %{buildroot}/srv
-install -d %{buildroot}%{_sysconfdir}/opt
 install -d %{buildroot}%{_sysconfdir}/profile.d
 install -m 644 %SOURCE0 %{buildroot}%{_sysconfdir}/profile.d
 install -m 755 %SOURCE1 %{buildroot}%{_prefix}/lib/%{name}
@@ -298,8 +296,6 @@ chmod 0644 %{buildroot}/etc/gateways
 /sbin/fasthalt
 /sbin/fastboot
 %{_bindir}/lsbinstall
-%dir %{_sysconfdir}/opt
-%dir /srv
 %dir /lib/%{name}
 %dir %{_prefix}/lib/%{name}
 %{_prefix}/lib/%{name}/install_initd
