@@ -22,11 +22,14 @@ Source0:	tmpdirlsb.sh
 Source1:	install_initd
 Source2:	remove_initd
 
-Exclusivearch:	%{ix86} x86_64
+Exclusivearch:	%{ix86} x86_64 %arm
 
 %define lsb_arch ia32
 %ifarch x86_64
 %define lsb_arch amd64
+%endif
+%ifarch armv7l
+%define lsb_arch armv7l
 %endif
 
 %description
