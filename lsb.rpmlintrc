@@ -1,0 +1,3 @@
+addFilter("E: zero-length.*")
+addFilter("E: standard-dir-owned-by-package.*")
+addFilter("E: explicit-lib-dependency.*")
