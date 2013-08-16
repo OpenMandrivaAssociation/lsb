@@ -14,7 +14,7 @@
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
 Version:	4.1
-Release:	11
+Release:	12
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
@@ -30,6 +30,9 @@ Exclusivearch:	%{ix86} x86_64 %arm
 %endif
 %ifarch armv7l
 %define lsb_arch armv7l
+%endif
+%ifarch armv7hl
+%define lsb_arch armv7hl
 %endif
 
 %description
