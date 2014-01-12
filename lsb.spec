@@ -14,7 +14,7 @@
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
 Version:	4.1
-Release:	13
+Release:	14
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
