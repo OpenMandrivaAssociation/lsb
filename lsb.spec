@@ -1,4 +1,4 @@
-%define compat_versions 2.0 3.0 3.1 3.2 4.0
+%define compat_versions 2.0 3.0 3.1 3.2 4.0 4.1 5.0
 %define modular_versions 3.1 3.2
 
 # populate the Provides for the compat versions and the old 3.x modular setup
@@ -13,8 +13,8 @@
 
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
-Version:	4.1
-Release:	17
+Version:	5.0
+Release:	0.alpha1.1
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
@@ -68,7 +68,6 @@ Requires:	libpango-1.0.so.0%{_arch_tag_suffix}
 Requires:	libpangoxft-1.0.so.0%{_arch_tag_suffix}
 Requires:	libpangocairo-1.0.so.0%{_arch_tag_suffix}
 Requires:	libfontconfig.so.1%{_arch_tag_suffix}
-Requires:	libqt-mt.so.3%{_arch_tag_suffix}
 Requires:	libjpeg.so.62%{_arch_tag_suffix}
 
 # former lsb-qt4
@@ -164,7 +163,7 @@ Requires:	lsb
 Requires:	perl-DBI perl-devel perl-XML-Parser perl-URI glibc-i18ndata
 Requires:	locales-de locales-en locales-es locales-fr locales-is
 Requires:	locales-it locales-ja locales-se locales-ta locales-zh 
-Requires:	wget qt4-database-plugin-sqlite qt3-Sqlite libx11-common
+Requires:	wget qt4-database-plugin-sqlite libx11-common
 Requires(pre):	rpm-helper
 Requires(postun):rpm-helper
 
