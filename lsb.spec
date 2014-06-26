@@ -57,8 +57,7 @@ Requires: %mklibname glu 1
 # former lsb-desktop
 Requires: %mklibname xml 2_2 
 Requires: %mklibname gtk-x11_2.0_ 0 
-# we really need libpng12.so here
-Requires: %mklibname png 0
+Requires: %mklibname png12 0
 Requires: %mklibname cairo 2 
 Requires: %mklibname pango 1.0_0 
 Requires: %mklibname fontconfig 1
