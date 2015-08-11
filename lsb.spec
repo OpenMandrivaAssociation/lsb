@@ -14,7 +14,7 @@
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
 Version:	5.0
-Release:	0.alpha.2
+Release:	0.alpha.3
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
