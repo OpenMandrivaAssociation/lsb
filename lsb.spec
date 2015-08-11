@@ -14,7 +14,7 @@
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
 Version:	5.0
-Release:	0.alpha.3
+Release:	0.alpha.4
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
@@ -129,7 +129,7 @@ Group: System/Base
 Requires: lsb-core-noarch
 Requires: %{_lib}glibc_lsb
 Requires: %mklibname pam 0
-Requires: %mklibname ncurses 5
+Requires: %mklibname ncurses 6
 
 Provides: lsb-core-%{lsb_arch} = %{version} 
 Provides: %{core_compat_provides_arch}
