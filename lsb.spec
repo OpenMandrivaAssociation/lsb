@@ -14,7 +14,7 @@
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
 Version:	5.0
-Release:	0.alpha.4
+Release:	0.alpha.5
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
@@ -23,10 +23,10 @@ Source1:	install_initd
 Source2:	remove_initd
 Source3:	lsb.rpmlintrc
 
-Exclusivearch: %{ix86} x86_64
+Exclusivearch: %{ix86} x86_64 znver1
 
 %define lsb_arch ia32
-%ifarch x86_64
+%ifarch x86_64 znver1
 %define lsb_arch amd64
 %endif
 
