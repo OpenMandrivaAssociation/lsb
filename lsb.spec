@@ -14,7 +14,7 @@
 Summary:	The skeleton package defining packages needed for LSB compliance
 Name:		lsb
 Version:	11.1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		System/Base
 URL:		http://www.linuxbase.org
@@ -63,15 +63,6 @@ Requires: %mklibname pango 1.0_0
 Requires: %mklibname fontconfig 1
 Requires: %mklibname jpeg 62
 
-# former lsb-qt4
-Requires: qt4-common >= 4.2.3
-# %%mklibname doesn't work here
-Requires: %{_lib}qtopengl4 >= 4.2.3
-Requires: %{_lib}qtsvg4 >= 4.2.3
-Requires: %{_lib}qtnetwork4 >= 4.2.3
-Requires: %{_lib}qtsql4 >= 4.2.3
-Requires: %{_lib}qtxml4 >= 4.2.3
-
 # printing
 Requires: %mklibname cups 2
 
@@ -94,8 +85,6 @@ Provides: lsb-graphics
 Obsoletes: lsb-graphics
 Provides: lsb-desktop
 Obsoletes: lsb-desktop
-Provides: lsb-desktop-qt4
-Obsoletes: lsb-desktop-qt4
 Provides: lsb = %{version}
 Obsoletes: lsb <= %{version}
 
@@ -160,7 +149,7 @@ Requires: lsb
 Requires: perl-DBI perl-devel perl-XML-Parser perl-URI glibc-i18ndata
 Requires: locales-de locales-en locales-es locales-fr locales-is
 Requires: locales-it locales-ja locales-se locales-ta locales-zh 
-Requires: wget qt4-database-plugin-sqlite libx11-common
+Requires: wget libx11-common
 Requires(pre):		rpm-helper
 Requires(postun):	rpm-helper
 
