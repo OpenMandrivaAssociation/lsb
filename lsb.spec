@@ -17,7 +17,7 @@ Version:	11.6
 Release:	1
 License:	GPL
 Group:		System/Base
-URL:		http://www.linuxbase.org
+URL:		https://www.linuxbase.org
 Source0:	tmpdirlsb.sh
 Source1:	install_initd
 Source2:	remove_initd
